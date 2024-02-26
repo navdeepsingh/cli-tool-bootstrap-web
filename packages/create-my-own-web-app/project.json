@@ -1,0 +1,34 @@
+{
+  "name": "create-my-own-web-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/create-my-own-web-app/bin",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/create-my-own-web-app",
+        "main": "packages/create-my-own-web-app/bin/index.ts",
+        "tsConfig": "packages/create-my-own-web-app/tsconfig.lib.json",
+        "assets": ["packages/create-my-own-web-app/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs create-my-own-web-app {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/create-my-own-web-app/jest.config.ts"
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["my-own-web"]
+}

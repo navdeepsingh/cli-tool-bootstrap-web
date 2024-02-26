@@ -1,0 +1,13 @@
+{
+  "name": "create-my-own-web-app",
+  "version": "0.0.1",
+  "dependencies": {
+    "create-nx-workspace": "18.0.5"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "bin": {
+    "create-my-own-web-app": "./bin/index.js"
+  }
+}
